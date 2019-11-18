@@ -18,7 +18,7 @@ async def on_message(message):
     if message.content.startswith("sbhello"):
         await message.channel.send("Hi :wave:")
     if message.content.startswith("sbhelp"):
-        embed = discord.Embed(title="Help", description="Page 1 of 2, use sbhelp2 for the rest of the commands!", color=0x00ff00)
+        embed = discord.Embed(title="Help", description="Help has been delivered!", color=0x00ff00)
         embed.add_field(name="sbhelp", value="This menu is brought up", inline=False)
         embed.add_field(name="sbcalmingmusic", value="Gives you a video of calming waves.", inline=False)
         embed.add_field(name="sbhug", value="Sobble hugs you!", inline=False)
@@ -30,15 +30,13 @@ async def on_message(message):
         embed.add_field(name='sborder [order info] [waffle]', value="Use this command to order waffles! Remember:Workers are real people too.", inline=False)
         embed.add_field(name='sbfacts', value="Tells you the facts in a debate!", inline=False)
         embed.add_field(name='sbcoinflip', value="It flips a coin.", inline=False)
-        await message.channel.send(embed=embed)
-    if message.content.startswith("sbhelp2"):
-        embed = discord.Embed(title="Help 2", description="Even more help!",colour=0x00ff00)
         embed.add_field(name="sbjoke", value="Tells you a funny joke.", inline=False)
         embed.add_field(name="sbwater", value="I give you some water.", inline=False)
         embed.add_field(name="sbhighfive", value="High five!", inline=False)
         embed.add_field(name="sbvanish", value="Provides a vanishing GIF.", inline=False)
         embed.add_field(name="sbdance", value="Provides a dancing GIF", inline=False)
         embed.add_field(name="sbmeme", value="Gives you a meme", inline=False)
+        await message.channel.send(embed=embed)
     if message.content.startswith("sbcalmingmusic"):
         await message.channel.send("***https://www.youtube.com/watch?v=j5a0jTc9S10***")
     if message.content.startswith("sbhug"):
@@ -105,8 +103,6 @@ async def on_message(message):
         meme = ["https://cdn.discordapp.com/attachments/645695800352964618/646018286504509440/ae6f07ce-085e-11ea-8da7-95ed4a38ab68.png","https://cdn.discordapp.com/attachments/645695800352964618/646018152743829514/EU-internet-meme_trans_NvBQzQNjv4BqpJliwavx4coWFCaEkEsb3pVDAZXwknrCGX2X3jMDFdw.png","https://cdn.discordapp.com/attachments/645695800352964618/646018080878624788/label-face-crowd-text-homedecor-person-human.png","https://cdn.discordapp.com/attachments/645695800352964618/646017964226904094/e0uhelxpmkm31.png"]
         memes = random.choice(meme)
         await message.channel.send(memes)
-
-@bot.command()
 async def kick(ctx, member : discord.Member, *, reason=None):
  await member.kick(reason=reason)
 @bot.command()
