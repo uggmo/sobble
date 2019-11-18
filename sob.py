@@ -20,12 +20,11 @@ async def on_message(message):
     if message.content.startswith("sbhelp"):
         embed = discord.Embed(title="Help", description="Page 1 of 2, use sbhelp 2 for the rest of the commands!", color=0x00ff00)
         embed.add_field(name="sbhelp", value="This menu is brought up", inline=False)
-        embed.add_field(name="sbhello", value="Returns the phrase 'hi! :wave:'. Use this for testing.", inline=False)
         embed.add_field(name="sbcalmingmusic", value="Gives you a video of calming waves.", inline=False)
         embed.add_field(name="sbhug", value="Sobble hugs you!", inline=False)
         embed.add_field(name="sbslap", value="Sobble slaps you!", inline=False)
         embed.add_field(name="sbdab", value="?????", inline=False)
-        embed.add_field(name="sbwisdom", value="Weekly wisdom, sometimes changed daily.", inline=False)
+        embed.add_field(name="sbwisdom", value="Random wisdom.", inline=False)
         embed.add_field(name="sb8ball", value="An 8ball function that sees the future.", inline=False)
         embed.add_field(name='sbdice [number]', value="A guessing game where you guess the dice number!", inline=False)
         embed.add_field(name='sborder [order info] [waffle]', value="Use this command to order waffles! Remember:Workers are real people too.", inline=False)
@@ -37,6 +36,9 @@ async def on_message(message):
         embed.add_field(name="sbjoke", value="Tells you a funny joke.", inline=False)
         embed.add_field(name="sbwater", value="I give you some water.", inline=False)
         embed.add_field(name="sbhighfive", value="High five!", inline=False)
+        embed.add_field(name="sbvanish", value="Provides a vanishing GIF.", inline=False)
+        embed.add_field(name="sbdance", value="Provides a dancing GIF", inline=False)
+        embed.add_field(name="sbmeme", value="Gives you a meme", inline=False)
     if message.content.startswith("sbcalmingmusic"):
         await message.channel.send("***https://www.youtube.com/watch?v=j5a0jTc9S10***")
     if message.content.startswith("sbhug"):
@@ -44,7 +46,8 @@ async def on_message(message):
     if message.content.startswith("sbslap"):
         await message.channel.send("No, I don't think I will.")
     if message.content.startswith("sbwisdom"):
-        await message.channel.send("Life is fine, but so is fortnite. Make life better with a simple trick. get a job.")
+        wisdom = random.choice["You can't get banned from a server if you follow the rules.", "A sort of life is better than no life.", "Some servers aren't worth going to.", "Don't obsess over everything."]
+        await message.channel.send(wisdom)
     if message.content.startswith("sb8ball"):
         message = random.choice["Yes.", "It is certain", "Probably", "50/50", "There is a low probability.", "No."]
         await message.channel.send(message)
@@ -88,8 +91,16 @@ async def on_message(message):
     if message.content.startswith("sbcoinflip"):
         coin = random.choice["Heads", "Tails"]
         await message.channel.send(coin)
+    if message.content.startswith("sbvanish"):
+        await message.channel.send("https://tenor.com/view/sobble-whatever-bye-pokemon-pokemon-sword-and-shield-sword-and-shield-gif-13656059")
+    if message.content.startswith("sbdance"):
+        await message.channel.send("https://tenor.com/view/thanos-dancing-fortnite-orange-gif-11793362")
     if message.content.startswith("sbdab"):
         await message.channel.send("You asked for this. https://cdn.discordapp.com/attachments/385837258768515083/645685851698888704/165ouZ0gVczfHuvwCma1S96R7I0wAAAABJRU5ErkJggg.png")
+    if message.content.startswith("sbmeme"):
+        meme = random.choice["https://cdn.discordapp.com/attachments/645695800352964618/646018286504509440/ae6f07ce-085e-11ea-8da7-95ed4a38ab68.png", "https://cdn.discordapp.com/attachments/645695800352964618/646018152743829514/EU-internet-meme_trans_NvBQzQNjv4BqpJliwavx4coWFCaEkEsb3pVDAZXwknrCGX2X3jMDFdw.png", "https://cdn.discordapp.com/attachments/645695800352964618/646018080878624788/label-face-crowd-text-homedecor-person-human.png", "https://cdn.discordapp.com/attachments/645695800352964618/646017964226904094/e0uhelxpmkm31.png", ""]
+        await message.channel.send(meme)
+
 @bot.command()
 async def kick(ctx, member : discord.Member, *, reason=None):
  await member.kick(reason=reason)
