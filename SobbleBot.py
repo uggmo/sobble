@@ -12,7 +12,7 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='Inital D|sbhelp for help!', type=discord.ActivityType.watching)
+    activity = discord.Activity(name='Initial D|sbhelp for help!', type=discord.ActivityType.watching)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
