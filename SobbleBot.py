@@ -13,7 +13,7 @@ bot.remove_command('help')
 async def on_ready():
     print('bot is up')
     activity = discord.Activity(name='Inital D|sbhelp for help!', type=discord.ActivityType.watching)
-    await client.change_presence(activity=activity)
+    await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
         embed = discord.Embed(title="Help", description="Help has been delivered!", color=0x00ff00)
