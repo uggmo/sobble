@@ -33,6 +33,7 @@ async def help(ctx):
         embed.add_field(name="sbdance", value="Provides a dancing GIF", inline=False)
         embed.add_field(name="sbrandmeme", value="Gives you a meme out of an ever growing list", inline=False)
         embed.add_field(name="sbdrift", value="kansei dorifto!", inline=False)
+        embed.add_field(name="sbeva", value="Sings the evanglion theme(or does it...)", inline=False
         await ctx.send(embed=embed)
 
 @bot.command()
@@ -104,6 +105,44 @@ async def randmeme(ctx):
 async def drift(ctx):
         await ctx.send("...k..kansei dorifto!?!?")
         await ctx.send("https://gfycat.com/zigzagbasicblackpanther")
+@bot.command()
+async def evacover(ctx):
+    await ctx.send("Zankoku na tenshi no you ni")
+    await ctx.send("Shounen yo shinwa ni nare")
+    time.sleep(2)
+    await ctx.send("Yo!")
+    await ctx.send("This is a story 'bout a boy named Shinji!")
+    time.sleep(2)
+    await ctx.send("Living in the flooded streets of New Orleans.")
+    await ctx.send("Gendo, Shinji's father, is a scientist, okay")
+    await ctx.send("So he built a giant robot for Shinji’s birthday!")
+    time.sleep(2)
+    await ctx.send("Shinji's friend Rei, knows how to bust a cap (how to bust a cap)")
+    await ctx.send("When she's not fighting aliens, she's taking a nap")
+    await ctx.send("Without Asuka from germany everybody would be lost, her country is responsible for the holo")
+    time.sleep(3)
+    await ctx.send("GRAFIC MAP!")
+    await ctx.send("Shinji said, “Thanks, Daddy, can I take it for a whirl?")
+    await ctx.send("And use it to help my friends save the world?")
+    time.sleep(2)
+    await ctx.send("Now c'mon, Shinji! Let's get this party on!")
+    await ctx.send("And kick alien butt in your EVANGELION!")
+    time.sleep(3)
+    await ctx.send("Yo! Shinji! Get in the robot!")
+    await ctx.send("Your dad loves you! Get in the robot!")
+    await ctx.send("The cockpit's too small for a grownup!")
+    await ctx.send("Kick some butt in your robot!")
+    time.sleep(5)
+    await ctx.send("Yo! Shinji! Get in the robot!")
+    await ctx.send("Your friends love you! Get in the robot!")
+    await ctx.send("Aliens get scared when you show up")
+    await ctx.send("Kick their butt in your robot!")
+    time.sleep(2)
+    await ctx.send("Yo! Shinji! Get in the robot!")
+    await ctx.send("It's not an EVA, it's a robot!")
+    time.sleep(2)
+    await ctx.send("Don't eat a rice ball, eat a donut!")
+    await ctx.send("Get inside that ro-bot!")
 #Moderation
 @bot.command() 
 async def kick(ctx, member : discord.Member, * , reason=None): 
@@ -125,6 +164,6 @@ async def ban(ctx, member : discord.Member, * , reason=None):
 async def unmute(ctx, member : discord.Member, * , reason=None): 
  await member.unmute(reason=reason)
  await ctx.send("unzip! That user's been unmuted")
-
+ #Bot Business Proposals:1
 
 bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdRAoQ.m2WxInCAssliDtGXt9akAp8766A')
