@@ -33,7 +33,7 @@ async def help(ctx):
         embed.add_field(name="sbdance", value="Provides a dancing GIF", inline=False)
         embed.add_field(name="sbrandmeme", value="Gives you a meme out of an ever growing list", inline=False)
         embed.add_field(name="sbdrift", value="kansei dorifto!", inline=False)
-        embed.add_field(name="sbeva", value="Sings the evanglion theme(or does it...)", inline=False
+        embed.add_field(name="sbevacover", value="Sings the evanglion theme(or does it...)", inline=False
         await ctx.send(embed=embed)
 
 @bot.command()
