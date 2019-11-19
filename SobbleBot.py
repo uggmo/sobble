@@ -84,19 +84,7 @@ async def on_message(message):
         meme = ["https://cdn.discordapp.com/attachments/645695800352964618/646018286504509440/ae6f07ce-085e-11ea-8da7-95ed4a38ab68.png","https://cdn.discordapp.com/attachments/645695800352964618/646018152743829514/EU-internet-meme_trans_NvBQzQNjv4BqpJliwavx4coWFCaEkEsb3pVDAZXwknrCGX2X3jMDFdw.png","https://cdn.discordapp.com/attachments/645695800352964618/646018080878624788/label-face-crowd-text-homedecor-person-human.png","https://cdn.discordapp.com/attachments/645695800352964618/646017964226904094/e0uhelxpmkm31.png"]
         memes = random.choice(meme)
         await message.channel.send(memes)
-async def kick(ctx, member : discord.Member, *, reason=None):
- await member.kick(reason=reason)
-@bot.command()
-async def ban(ctx, member : discord.Member, *, reason=None):
- await member.ban(reason=reason)
-@bot.command()
-async def mute(ctx, member : discord.Member, *, reason="Because you don't stop talking!"):
- await member.mute(reason=reason)
-@bot.command()
-async def unban(ctx, member : discord.Member, *, reason="You're really a good guy!"):
- await member.unban(reason=reason)
-@bot.command()
-async def unmute(ctx, member : discord.Member, *, reason="because you're good again"):
- await member.unmute(reason=reason)
+@bot.command(name='sbyeet')
+    await ctx.send('No,I am yeet!')
 Client.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdLw1w.0zeMhBp6Wk7jQhO4F3B8AJgTZ7A')
 
