@@ -90,7 +90,7 @@ async def vanish(ctx):
 @bot.command()
 async def dance(ctx):
     await ctx.send("https://tenor.com/view/thanos-dancing-fortnite-orange-gif-11793362")
-@bot.command
+@bot.command()
 async def dab(ctx):
     await ctx.send("You asked.")
     time.sleep(1)
