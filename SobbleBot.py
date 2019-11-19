@@ -153,5 +153,5 @@ def setup(bot):
     global logger
     logger = logging.getLogger('bot')
     bot.add_cog(DiscordBotsOrgAPI(bot))
-bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdQaag.NE9HnuKTrkpzCPR3fbC8dQFmWrg')
+bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdQ-cQ.q0-bPINN47aTfTFTYb6F2Gb5TeE')
 
