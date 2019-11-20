@@ -10,11 +10,11 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='pokemon|sbhelp for help!', type=discord.ActivityType.watching)
+    activity = discord.Activity(name='pokemon|sbhelp for help!', type=discord.ActivityType.playing)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
-        embed = discord.Embed(title="Help", description="Help has been delivered!", color=0x00ff00)
+        embed = discord.Embed(title="Help", description="Help has been delivered!for Discord.PY/DBL help, use dhelp.", color=0x206694)
         embed.add_field(name="sbhelp", value="This menu is brought up", inline=False)
         embed.add_field(name="sbcalmingmusic", value="Gives you a video of calming waves.", inline=False)
         embed.add_field(name="sbhug", value="Sobble hugs you!", inline=False)
@@ -32,7 +32,34 @@ async def help(ctx):
         embed.add_field(name="sbrandmeme", value="Gives you a meme out of an ever growing list", inline=False)
         embed.add_field(name="sbdrift", value="kansei dorifto!", inline=False)
         await ctx.send(embed=embed)
-
+@bot.command()
+async def dhelp(ctx):
+    embed = discord.Embed(title="DBL/DPY Help is now being delivered!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
+    embed.add_field(name="knowbasiccoding", value="The bot says'Before you ask some easy to answer questions, you should know basic coding.'",inline=False)
+    embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
+    embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
+    embed.add_field(name="tias", value="Try it and see!", inline=False)
+    embed.add_field(name="tokenleak", value="How to reset you or someone else's bot's token if it was leaked.", inline=false
+    await ctx.send(embed=embed)
+@bot.command()
+async def knowbasiccoding(ctx):
+ await ctx.send("Before you ask some easy to answer questions, you should know basic coding.")
+@bot.command()
+async def searchgoogle(ctx):
+    await ctx.send("Search google for an answer, this is easy to answer.")
+@bot.command()
+async def readdocs(ctx):
+ await ctx.send("Read the docs.https://cdn.discordapp.com/attachments/645695800352964618/646681731713204255/9k.png")
+@bot.command()
+async def tias(ctx):
+    await ctx.send("https://i.imgur.com/VkRzeQJ.png")
+@bot.command()
+async def tokenleak(ctx):
+    embed = discord.Embed(title="OH SHIT! YOU LEAKED YOUR TOKEN!", description="You just let anyone control your bot!")
+    embed.add_field(name="How to regenerate your token.", value="Go to Discord Developer Portal, go to your bot, and click Bot. From there, there should be a section with the title TOKEN. From there, press regenerate and accept.", inline=False)
+    embed.add_field(name="Now what?", value="Replace the line of code with your bot's old token, and add your new one.", inline=False)
+    embed.add_field(name="You did it!", value="Your bot is secure once again!", inline=False
+    await ctx.send(embed=embed)                
 @bot.command()
 async def calmingmusic(ctx):
     await ctx.send("***https://www.youtube.com/watch?v=j5a0jTc9S10***")
@@ -125,4 +152,4 @@ async def unmute(ctx, member : discord.Member, * , reason=None):
  await ctx.send("unzip! That user's been unmuted")
  #Bot Business Proposals:1
 
-bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdRAoQ.m2WxInCAssliDtGXt9akAp8766A')
+bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdUt2A.WW3NnMU9oecxBk-ESuYoxafGyPg')
