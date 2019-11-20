@@ -39,7 +39,6 @@ async def dhelp(ctx):
     embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
     embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
     embed.add_field(name="tias", value="Try it and see!", inline=False)
-    embed.add_field(name="tokenleak", value="How to reset you or someone else's bot's token if it was leaked.", inline=false
     await ctx.send(embed=embed)
 @bot.command()
 async def knowbasiccoding(ctx):
@@ -53,13 +52,7 @@ async def readdocs(ctx):
 @bot.command()
 async def tias(ctx):
     await ctx.send("https://i.imgur.com/VkRzeQJ.png")
-@bot.command()
-async def tokenleak(ctx):
-    embed = discord.Embed(title="OH SHIT! YOU LEAKED YOUR TOKEN!", description="You just let anyone control your bot!")
-    embed.add_field(name="How to regenerate your token.", value="Go to Discord Developer Portal, go to your bot, and click Bot. From there, there should be a section with the title TOKEN. From there, press regenerate and accept.", inline=False)
-    embed.add_field(name="Now what?", value="Replace the line of code with your bot's old token, and add your new one.", inline=False)
-    embed.add_field(name="You did it!", value="Your bot is secure once again!", inline=False
-    await ctx.send(embed=embed)                
+
 @bot.command()
 async def calmingmusic(ctx):
     await ctx.send("***https://www.youtube.com/watch?v=j5a0jTc9S10***")
