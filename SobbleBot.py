@@ -11,7 +11,7 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='pokemon|sbhelp!', type=discord.ActivityType.Streaming)
+    activity = discord.Activity(name='pokemon|sbhelp!', type=discord.ActivityType.streaming)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
