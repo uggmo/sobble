@@ -7,15 +7,23 @@ from discord import Client
 from discord.ext import commands
 bot = commands.Bot(command_prefix='sb')
 bot.remove_command('help')
+
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='pokemon|sbhelp for help!', type=discord.ActivityType.playing)
+    activity = discord.Activity(name='pokemon|sbhelp!', type=discord.ActivityType.streaming)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
-        embed = discord.Embed(title="Help", description="Help has been delivered!for Discord.PY/DBL help, use dhelp.", color=0x206694)
-        embed.add_field(name="sbhelp", value="This menu is brought up", inline=False)
+    embed = discord.Embed(title="{user}, here's your help help!", description="This is the help command help page!")
+    embed.add_field(name="fhelp[page number]", description="The main aspect of the bot, fun!", inline=False)
+    embed.add_field(name="mhelp", description="The 2nd aspect of the bot, moderation!", inline=False)
+    embed.add_field(name="dhelp", description="Help for DBL commands!", inline=False
+    await ctx.send(embed=embed)    
+@bot.command()
+async def fhelp(ctx):
+        embed = discord.Embed(title="{user}, here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
+        embed.add_field(name="sbhelp", value="Help is brought up", inline=False)
         embed.add_field(name="sbcalmingmusic", value="Gives you a video of calming waves.", inline=False)
         embed.add_field(name="sbhug", value="Sobble hugs you!", inline=False)
         embed.add_field(name="sbslap", value="Sobble slaps you!", inline=False)
@@ -25,21 +33,47 @@ async def help(ctx):
         embed.add_field(name="sbdice",value="Guess a number of 6, if the computer sees the same, you win!", inline=False)
         embed.add_field(name='sbcoinflip', value="It flips a coin.", inline=False)
         embed.add_field(name="sbjoke", value="Tells you a funny joke.", inline=False)
+@bot.command()
+async def fhelp2(ctx):
+        embed = discord.Embed(title="{user}, here's your help!", description="This is page 2 of Fun Help!For page one, do sbfhelp!")        
         embed.add_field(name="sbwater", value="I give you some water.", inline=False)
         embed.add_field(name="sbhighfive", value="High five!", inline=False)
         embed.add_field(name="sbvanish", value="Provides a vanishing GIF.", inline=False)
         embed.add_field(name="sbdance", value="Provides a dancing GIF", inline=False)
         embed.add_field(name="sbrandmeme", value="Gives you a meme out of an ever growing list", inline=False)
         embed.add_field(name="sbdrift", value="kansei dorifto!", inline=False)
+        embed.add_field(name="sbadd", value="adds 2 numbers together", inline=False)
+        embed.add_field(name="sbrepeat", value="repeats your message", inline=False)
+        embed.add_field(name="sbjoined", value="tells you when a user joined", inline=False)
         await ctx.send(embed=embed)
 @bot.command()
+async def mhelp(ctx):
+    user = ctx.message.author.id
+    embed = discord.Embed(title="{user},here's your moderation help!", description="Moderation help is here!")
+    embed.add_field(name="sbban", value="Bans a user", inline=False)
+    embed.add_field(name="sbunban", value="Unbans a user", inline=False)
+    embed.add_field(name="sbmute", value="Mutes a user(YOU MUST ADD A ROLE WITH THE NAME MUTED AND MAKE IT HAVE NO TALKING PERMS)", inline=False)
+    embed.add_field(name="sbunmute", value="Unmutes a user", inline=False)
+    await ctx.send(user, embed=embed)
+     
+@bot.command()
 async def dhelp(ctx):
-    embed = discord.Embed(title="DBL/DPY Help is now being delivered!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
+    user = ctx.message.author.id
+    embed = discord.Embed(title="{user}, here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
     embed.add_field(name="knowbasiccoding", value="The bot says'Before you ask some easy to answer questions, you should know basic coding.'",inline=False)
     embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
     embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
     embed.add_field(name="tias", value="Try it and see!", inline=False)
+    await ctx.send("Help has been sent to your dms!")
     await ctx.send(embed=embed)
+@bot.command()
+async def faq(ctx):
+    user = ctx.message.author.id
+    embed = discord.Embed(title="Here's your SobbleBot FAQ!", description="Frequently asked questions")
+    embed.add_field(name="Who made this bot?", value="Devble#3618 did!", inline=False)
+    embed.add_field(name="What's the support server?", value="https://discord.gg/8uQ4EeX", inline=False)
+    embed.add_field(name="HELP! sbmute won't work!", value="You must add a role called 'Muted', and make it have no talking perms.", inline=False)
+    await ctx.send(embed=embed)    
 @bot.command()
 async def knowbasiccoding(ctx):
  await ctx.send("Before you ask some easy to answer questions, you should know basic coding.")
@@ -103,6 +137,10 @@ async def coinflip():
         coinf = random.choice(coin)
         await ctx.send(coinf)
 @bot.command()
+async def joined(ctx, member: discord.Member):
+    """Says when a member joined."""
+    await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
+@bot.command()
 async def vanish(ctx):
     await ctx.send("https://tenor.com/view/sobble-whatever-bye-pokemon-pokemon-sword-and-shield-sword-and-shield-gif-13656059")
 @bot.command()
@@ -122,27 +160,46 @@ async def randmeme(ctx):
 async def drift(ctx):
         await ctx.send("...k..kansei dorifto!?!?")
         await ctx.send("https://gfycat.com/zigzagbasicblackpanther")
+@bot.command()
+async def add(ctx, left: int, right: int):
+    """Adds two numbers together."""
+    await ctx.send(left + right)
 #Moderation
-@bot.command() 
-async def kick(ctx, member : discord.Member, * , reason=None): 
- await member.kick(reason=reason)
- await ctx.send("GAME! That user's been kicked.")
-@bot.command() 
-async def mute(ctx, member : discord.Member, * , reason=None): 
- await member.mute(reason=reason)
- await ctx.send("zip! That user's been muted.")
+@bot.command()
+async def kick(ctx, member : discord.Member, * , reason=None):
+  await member.kick(reason=reason)
+  await ctx.send("GAME! That user's been kicked.")
 @bot.command() 
 async def unban(ctx, member : discord.Member, * , reason=None): 
- await member.unban(reason=reason)
- await ctx.send("*door opens* That user has been unbanned,")
+  await member.unban(reason=reason)
+  await ctx.send("*door opens* That user has been unbanned,")
 @bot.command() 
 async def ban(ctx, member : discord.Member, * , reason=None): 
- await member.mute(reason=reason)
- await ctx.send("That user's been hit with a ban hammer..")
-@bot.command() 
-async def unmute(ctx, member : discord.Member, * , reason=None): 
- await member.unmute(reason=reason)
- await ctx.send("unzip! That user's been unmuted")
+   await member.unban(reason=reason)
+   await ctx.send("That user's been hit with a ban hammer..")
+@bot.command()
+async def mute(ctx, member : discord.Member = None):
+    role = discord.utils.get(ctx.guild.roles, name="Muted")
+    if member is None:
+        await ctx.send('Please pass in a valid user')
+        return
+
+    await member.add_roles(role)
+    await ctx.send(f'{str(member)} was muted!')
+@bot.command()
+async def unmute(ctx, member : discord.Member = None):
+    role = discord.utils.get(ctx.guild.roles, name="Muted")
+    if member is None:
+        await ctx.send('Please pass in a valid user')
+        return
+
+    await member.remove_roles(role)
+    await ctx.send(f'{str(member)} was unmuted!')
+
+
+
+
+
  #Bot Business Proposals:1
 
-bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdUt2A.WW3NnMU9oecxBk-ESuYoxafGyPg')
+bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdWTxg.7_ZZk4CCARiRcuShl-51LBzUJC8')
