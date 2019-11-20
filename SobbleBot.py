@@ -11,18 +11,19 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='pokemon|sbhelp!', type=discord.ActivityType.streaming)
+    activity = discord.Activity(name='pokemon|sbhelp!', type=discord.ActivityType.Streaming)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
-    embed = discord.Embed(title="{user}, here's your help help!", description="This is the help command help page!")
-    embed.add_field(name="fhelp[page number]", description="The main aspect of the bot, fun!", inline=False)
-    embed.add_field(name="mhelp", description="The 2nd aspect of the bot, moderation!", inline=False)
-    embed.add_field(name="dhelp", description="Help for DBL commands!", inline=False
+    embed = discord.Embed(title="Here's your help help!", description="This is the help command help page!")
+    embed.add_field(name="fhelp[page number]", value="The main aspect of the bot, fun!", inline=False)
+    embed.add_field(name="mhelp", value="The 2nd aspect of the bot, moderation!", inline=False)
+    embed.add_field(name="dhelp", value="Help for DBL commands!", inline=False)
+    embed.add_field(name="faq", value="Frequently Asked Questions", inline=False)
     await ctx.send(embed=embed)    
 @bot.command()
 async def fhelp(ctx):
-        embed = discord.Embed(title="{user}, here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
+        embed = discord.Embed(title="Here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
         embed.add_field(name="sbhelp", value="Help is brought up", inline=False)
         embed.add_field(name="sbcalmingmusic", value="Gives you a video of calming waves.", inline=False)
         embed.add_field(name="sbhug", value="Sobble hugs you!", inline=False)
@@ -33,9 +34,10 @@ async def fhelp(ctx):
         embed.add_field(name="sbdice",value="Guess a number of 6, if the computer sees the same, you win!", inline=False)
         embed.add_field(name='sbcoinflip', value="It flips a coin.", inline=False)
         embed.add_field(name="sbjoke", value="Tells you a funny joke.", inline=False)
+        await ctx.send(embed=embed)
 @bot.command()
 async def fhelp2(ctx):
-        embed = discord.Embed(title="{user}, here's your help!", description="This is page 2 of Fun Help!For page one, do sbfhelp!")        
+        embed = discord.Embed(title="Here's your help!", description="This is page 2 of Fun Help!For page one, do sbfhelp!")        
         embed.add_field(name="sbwater", value="I give you some water.", inline=False)
         embed.add_field(name="sbhighfive", value="High five!", inline=False)
         embed.add_field(name="sbvanish", value="Provides a vanishing GIF.", inline=False)
@@ -48,27 +50,23 @@ async def fhelp2(ctx):
         await ctx.send(embed=embed)
 @bot.command()
 async def mhelp(ctx):
-    user = ctx.message.author.id
-    embed = discord.Embed(title="{user},here's your moderation help!", description="Moderation help is here!")
+    embed = discord.Embed(title="Here's your moderation help!", description="Moderation help is here!")
     embed.add_field(name="sbban", value="Bans a user", inline=False)
     embed.add_field(name="sbunban", value="Unbans a user", inline=False)
     embed.add_field(name="sbmute", value="Mutes a user(YOU MUST ADD A ROLE WITH THE NAME MUTED AND MAKE IT HAVE NO TALKING PERMS)", inline=False)
     embed.add_field(name="sbunmute", value="Unmutes a user", inline=False)
-    await ctx.send(user, embed=embed)
+    await ctx.send(embed=embed)
      
 @bot.command()
 async def dhelp(ctx):
-    user = ctx.message.author.id
-    embed = discord.Embed(title="{user}, here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
+    embed = discord.Embed(title="Here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
     embed.add_field(name="knowbasiccoding", value="The bot says'Before you ask some easy to answer questions, you should know basic coding.'",inline=False)
     embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
     embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
     embed.add_field(name="tias", value="Try it and see!", inline=False)
-    await ctx.send("Help has been sent to your dms!")
     await ctx.send(embed=embed)
 @bot.command()
 async def faq(ctx):
-    user = ctx.message.author.id
     embed = discord.Embed(title="Here's your SobbleBot FAQ!", description="Frequently asked questions")
     embed.add_field(name="Who made this bot?", value="Devble#3618 did!", inline=False)
     embed.add_field(name="What's the support server?", value="https://discord.gg/8uQ4EeX", inline=False)
