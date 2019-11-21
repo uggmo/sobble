@@ -161,9 +161,7 @@ async def coinflip(ctx):
 @bot.event    
 async def on_message(message):
  if message.author == bot.user:
-     return       
- if message.content.startswith('sb'):
-     await message.channel.send("That's not a command! Use sb!help to find all the commands!")
+      return
  if message.content.startswith('<@645009678224457740>'):    
      await message.channel.send("Use sb!help to find all the commands!")
  await bot.process_commands(message)
