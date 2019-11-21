@@ -17,7 +17,7 @@ async def on_ready():
 async def help(ctx):
     user = ctx.author
     embed = discord.Embed(title="Here's your help help!", description="This is the help command help page!")
-    embed.add_field(name="fhelp[pagenumber after page 1]", value="The main aspect of the bot, fun![use fhelp for page 1]", inline=False)
+    embed.add_field(name="fhelp[pagenumber]", value="The main aspect of the bot, fun!", inline=False)
     embed.add_field(name="mhelp", value="The 2nd aspect of the bot, moderation!", inline=False)
     embed.add_field(name="dhelp", value="Help for DBL commands!", inline=False)
     embed.add_field(name="faq", value="Frequently Asked Questions", inline=False)
@@ -38,7 +38,7 @@ async def suggest(ctx):
           await ctx.message.add_reaction(emoji)
            
 @bot.command()
-async def fhelp(ctx):
+async def fhelp1(ctx):
         user = ctx.author
         embed = discord.Embed(title="Here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
         embed.add_field(name="fhelp", value="Help is brought up", inline=False)
@@ -64,9 +64,7 @@ async def fhelp2(ctx):
         embed.add_field(name="dance", value="Provides a dancing GIF", inline=False)
         embed.add_field(name="randmeme", value="Gives you a meme out of an ever growing list", inline=False)
         embed.add_field(name="drift", value="kansei dorifto!", inline=False)
-        embed.add_field(name="add", value="adds 2 numbers together", inline=False)
-        embed.add_field(name="repeat", value="repeats your message", inline=False)
-        embed.add_field(name="joined", value="tells you when a user joined", inline=False)
+        embed.add_field(name="joined", value="Tells you when a user joined", inline=False)
         await user.send(embed=embed)
         await ctx.send("Help has been sent to your DMs!")    
 @bot.command()
@@ -75,7 +73,7 @@ async def mhelp(ctx):
     embed = discord.Embed(title="Here's your moderation help!", description="Moderation help is here!")
     embed.add_field(name="sbban", value="Bans a user", inline=False)
     embed.add_field(name="sbunban", value="Unbans a user", inline=False)
-    embed.add_field(name="sbmute", value="Mutes a user(YOU MUST ADD A ROLE WITH THE NAME MUTED AND MAKE IT HAVE NO TALKING PERMS)", inline=False)
+    embed.add_field(name="sbmute", value="Mutes a user[creates a role called muted]", inline=False)
     embed.add_field(name="sbunmute", value="Unmutes a user", inline=False)
     await user.send(embed=embed)
     await ctx.send("Help has been sent to your DMs!")    
@@ -96,7 +94,6 @@ async def faq(ctx):
     embed = discord.Embed(title="Here's your SobbleBot FAQ!", description="Frequently asked questions")
     embed.add_field(name="Who made this bot?", value="Devble#3618 did!", inline=False)
     embed.add_field(name="What's the support server?", value="https://discord.gg/8uQ4EeX", inline=False)
-    embed.add_field(name="HELP! sbmute won't work!", value="You must add a role called 'Muted', and make it have no talking perms.", inline=False)
     await user.send(embed=embed)
     await ctx.send("Help has been sent to your DMs!")    
 @bot.command()
@@ -164,7 +161,8 @@ async def coinflip():
 @bot.command()
 async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
-    await ctx.send('{0.name} joined in {0.joined_at}'.format(member))
+    embed = discord.Embed(name="When did they join?", description="{0.name} joined in {0.joined_at}".format(member))
+    await ctx.send(embed)
 @bot.command()
 async def vanish(ctx):
     await ctx.send("https://tenor.com/view/sobble-whatever-bye-pokemon-pokemon-sword-and-shield-sword-and-shield-gif-13656059")
@@ -185,41 +183,61 @@ async def randmeme(ctx):
 async def drift(ctx):
         await ctx.send("...k..kansei dorifto!?!?")
         await ctx.send("https://gfycat.com/zigzagbasicblackpanther")
-@bot.command()
-async def add(ctx, left: int, right: int):
-    """Adds two numbers together."""
-    await ctx.send(left + right)
 #Moderation
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+           await ctx.send("There's no right for you to be using this command!(Missing Permissions)")
+                
+
+
 @bot.command()
+@commands.has_permissions(kick_members=True)
 async def kick(ctx, member : discord.Member, * , reason=None):
-  await member.kick(reason=reason)
-  await ctx.send("GAME! That user's been kicked.")
-@bot.command() 
+  if member is None:
+      await ctx.send("Please input an actual person!")
+  else:         
+   await member.kick(reason=reason)
+   await ctx.send("GAME! That user's been kicked.")  
+@bot.command()
+@commands.has_permissions(ban_members=True)
 async def unban(ctx, member : discord.Member, * , reason=None): 
-  await member.unban(reason=reason)
-  await ctx.send("*door opens* That user has been unbanned,")
-@bot.command() 
-async def ban(ctx, member : discord.Member, * , reason=None): 
+  if member is None:    
+      await ctx.send("There's no user to unban!")
+  else:      
    await member.unban(reason=reason)
-   await ctx.send("That user's been hit with a ban hammer..")
+   await ctx.send("*door opens* That user has been unbanned")
+@bot.command() 
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, member : discord.Member, * , reason=None): 
+  if member is None:    
+      await ctx.send("There's no user to ban!")
+  else:      
+   await member.ban(reason=reason)
+   await ctx.send("*door shuts* That user has been banned")
 @bot.command()
+@commands.has_permissions(kick_members=True)
 async def mute(ctx, member : discord.Member = None):
-    role = discord.utils.get(ctx.guild.roles, name="Muted")
-    if member is None:
+     perm = discord.PermissionOverwrite(send_messages=False).pair()[0]
+     await ctx.guild.create_role(name="Muted", permissions=perm)
+     role = discord.utils.get(ctx.guild.roles, name="Muted")
+
+     if member is None:
         await ctx.send('Please pass in a valid user')
         return
 
-    await member.add_roles(role)
-    await ctx.send(f'{str(member)} was muted!')
+     await member.add_roles(role)
+     await ctx.send(f'{str(member)} was muted!')  
+
 @bot.command()
+@commands.has_permissions(kick_members=True)
 async def unmute(ctx, member : discord.Member = None):
-    role = discord.utils.get(ctx.guild.roles, name="Muted")
     if member is None:
         await ctx.send('Please pass in a valid user')
         return
-
-    await member.remove_roles(role)
-    await ctx.send(f'{str(member)} was unmuted!')
+    else:
+     await member.remove_roles("Muted")
+     await ctx.send(f'{str(member)} was unmuted!')
 
 
 
