@@ -5,7 +5,7 @@ import time
 import logging
 from discord import Client
 from discord.ext import commands
-bot = commands.Bot(command_prefix='sb')
+bot = commands.Bot(command_prefix='sb' or 'sb ')
 bot.remove_command('help')
 
 @bot.event
