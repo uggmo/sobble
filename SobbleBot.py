@@ -41,7 +41,7 @@ async def suggest(ctx):
 @bot.command()
 async def fhelp(ctx):
         user = ctx.author
-        embed = discord.Embed(title="{user}, here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
+        embed = discord.Embed(title="Here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
         embed.add_field(name="sbfhelp", value="Help is brought up", inline=False)
         embed.add_field(name="sbsuggest [suggestion]", value="Suggests an idea to be added to SobbleBot", inline=False)
         embed.add_field(name="sbcalmingmusic", value="Gives you a video of calming waves.", inline=False)
@@ -58,7 +58,7 @@ async def fhelp(ctx):
 @bot.command()
 async def fhelp2(ctx):
         user = ctx.author
-        embed = discord.Embed(title="{user}, here's your help!", description="This is page 2 of Fun Help!For page one, do sbfhelp!")        
+        embed = discord.Embed(title="Here's your help!", description="This is page 2 of Fun Help!For page one, do sbfhelp!")        
         embed.add_field(name="sbwater", value="I give you some water.", inline=False)
         embed.add_field(name="sbhighfive", value="High five!", inline=False)
         embed.add_field(name="sbvanish", value="Provides a vanishing GIF.", inline=False)
@@ -73,7 +73,7 @@ async def fhelp2(ctx):
 @bot.command()
 async def mhelp(ctx):
     user = ctx.author
-    embed = discord.Embed(title="{user}, here's your moderation help!", description="Moderation help is here!")
+    embed = discord.Embed(title="Here's your moderation help!", description="Moderation help is here!")
     embed.add_field(name="sbban", value="Bans a user", inline=False)
     embed.add_field(name="sbunban", value="Unbans a user", inline=False)
     embed.add_field(name="sbmute", value="Mutes a user(YOU MUST ADD A ROLE WITH THE NAME MUTED AND MAKE IT HAVE NO TALKING PERMS)", inline=False)
@@ -84,7 +84,7 @@ async def mhelp(ctx):
 @bot.command()
 async def dhelp(ctx):
     user = ctx.author
-    embed = discord.Embed(title="{user}, here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
+    embed = discord.Embed(title="Here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
     embed.add_field(name="knowbasiccoding", value="The bot says'Before you ask some easy to answer questions, you should know basic coding.'",inline=False)
     embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
     embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
@@ -94,7 +94,7 @@ async def dhelp(ctx):
 @bot.command()
 async def faq(ctx):
     user = ctx.author
-    embed = discord.Embed(title="{user}, here's your SobbleBot FAQ!", description="Frequently asked questions")
+    embed = discord.Embed(title="Here's your SobbleBot FAQ!", description="Frequently asked questions")
     embed.add_field(name="Who made this bot?", value="Devble#3618 did!", inline=False)
     embed.add_field(name="What's the support server?", value="https://discord.gg/8uQ4EeX", inline=False)
     embed.add_field(name="HELP! sbmute won't work!", value="You must add a role called 'Muted', and make it have no talking perms.", inline=False)
