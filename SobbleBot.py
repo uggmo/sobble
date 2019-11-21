@@ -163,14 +163,15 @@ async def on_message(message):
  if message.author == bot.user:
       return
  if message.content.startswith('<@645009678224457740>'):    
-     await message.channel.send("Use sb!help to find all the commands!")
+     await message.channel.send("The prefix is `sb!help`!")
  await bot.process_commands(message)
 
 @bot.command()
 async def joined(ctx, member: discord.Member):
-    """Says when a member joined."""
-    embed = discord.Embed(name="When did they join?", description="{0.name} joined in {0.joined_at}".format(member))
-    await ctx.send(embed)
+    embed = discord.Embed(name="When did they join?", description="Hmm, when did they join?")
+    embed.add_field(name="Let's see... oh I know!", value="{0.name} joined in {0.joined_at}!".format(member))
+    embed.add_field(name="The time system", value="It's YYYY-MM-DD")
+    await ctx.send(embed=embed)
 @bot.command()
 async def vanish(ctx):
     await ctx.send("https://tenor.com/view/sobble-whatever-bye-pokemon-pokemon-sword-and-shield-sword-and-shield-gif-13656059")
