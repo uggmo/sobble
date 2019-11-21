@@ -11,7 +11,7 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='pokemon|@sobblebot help/sb!help', type=discord.ActivityType.playing)
+    activity = discord.Activity(name='pokemon|sb!help', type=discord.ActivityType.playing)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
@@ -153,11 +153,21 @@ async def water(ctx):
 @bot.command()
 async def highfive(ctx):
    await ctx.send("https://tenor.com/view/pokemon-sobble-high-five-hi-five-cute-gif-15450470")
-@bot.command
-async def coinflip():
+@bot.command()
+async def coinflip(ctx):
         coin = ["Heads", "Tails"]
         coinf = random.choice(coin)
         await ctx.send(coinf)
+@bot.event    
+async def on_message(message):
+ if message.author == bot.user:
+     return       
+ if message.content.startswith('sb'):
+     await message.channel.send("That's not a command! Use sb!help to find all the commands!")
+ if message.content.startswith('<@645009678224457740>'):    
+     await message.channel.send("Use sb!help to find all the commands!")
+ await bot.process_commands(message)
+
 @bot.command()
 async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
@@ -183,6 +193,8 @@ async def randmeme(ctx):
 async def drift(ctx):
         await ctx.send("...k..kansei dorifto!?!?")
         await ctx.send("https://gfycat.com/zigzagbasicblackpanther")
+
+
 #Moderation
 @bot.event
 async def on_command_error(ctx, error):
