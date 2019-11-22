@@ -26,8 +26,9 @@ async def help(ctx):
 @bot.command()
 async def suggest(ctx):
           emoji = '\N{THUMBS UP SIGN}'
+          aemoji = '\N{THUMBS DOWN SIGN}'
           query = ctx.message.content
-          stopwords = ['sbsuggest']
+          stopwords = ['sb!suggest']
           querywords = query.split()
           resultwords = [word for word in querywords if word.lower() not in stopwords]
           info= ' '.join(resultwords)     
@@ -36,7 +37,8 @@ async def suggest(ctx):
           channel = bot.get_channel(646075728642834443)
           await channel.send(embed=embed)
           await ctx.message.add_reaction(emoji)
-           
+          await ctx.messageObject.add_reaction(emoji)
+          await ctx.messageObject.add_reaction(aemoji) 
 @bot.command()
 async def fhelp1(ctx):
         user = ctx.author
@@ -163,7 +165,7 @@ async def on_message(message):
  if message.author == bot.user:
       return
  if message.content.startswith('<@645009678224457740>'):    
-     await message.channel.send("The prefix is `sb!help`!")
+     await message.channel.send("Use sb!help to find all the commands!")
  await bot.process_commands(message)
 
 @bot.command()
