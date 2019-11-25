@@ -15,14 +15,12 @@ async def on_ready():
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
-    user = ctx.author
     embed = discord.Embed(title="Here's your help help!", description="This is the help command help page!")
-    embed.add_field(name="fhelp[pagenumber]", value="The main aspect of the bot, fun!", inline=False)
+    embed.add_field(name="fhelp_[pagenumber]", value="The main aspect of the bot, fun!", inline=False)
     embed.add_field(name="mhelp", value="The 2nd aspect of the bot, moderation!", inline=False)
     embed.add_field(name="dhelp", value="Help for DBL commands!", inline=False)
     embed.add_field(name="faq", value="Frequently Asked Questions", inline=False)
-    await user.send(embed=embed)
-    await ctx.send("Help has been sent to your DMs!")
+    await ctx.send(embed=embed)
 @bot.command()
 async def suggest(ctx):
           emoji = '\N{THUMBS UP SIGN}'
@@ -40,64 +38,63 @@ async def suggest(ctx):
           await ctx.messageObject.add_reaction(emoji)
           await ctx.messageObject.add_reaction(aemoji) 
 @bot.command()
-async def fhelp1(ctx):
-        user = ctx.author
-        embed = discord.Embed(title="Here's your fun help!", description="Fun Help Page 1 has been brought up! Page 1 of 2For Moderation Help, use mhelp.For Discord.PY/DBL help, use dhelp.", color=0x206694)
+async def fhelp_1(ctx):
+        embed = discord.Embed(title="Here's your fun help!", description="Page 1 of 3", color=0x206694)
         embed.add_field(name="fhelp", value="Help is brought up", inline=False)
         embed.add_field(name="suggest [suggestion]", value="Suggests an idea to be added to SobbleBot", inline=False)
         embed.add_field(name="calmingmusic", value="Gives you a video of calming waves.", inline=False)
         embed.add_field(name="hug", value="Sobble hugs you!", inline=False)
         embed.add_field(name="slap", value="Sobble slaps you!", inline=False)
         embed.add_field(name="dab", value="?????", inline=False)
+        await ctx.send(embed=embed)
+@bot.command() 
+async def fhelp_2(ctx):
+        embed = discord.Embed(title="Here's your fun help!", description="Page 2 of 3")            
         embed.add_field(name="wisdom", value="Random wisdom.", inline=False)
         embed.add_field(name="eightball", value="An 8ball function that sees the future.", inline=False)
         embed.add_field(name="dice",value="Guess a number of 6, if the computer sees the same, you win!", inline=False)
         embed.add_field(name='coinflip', value="It flips a coin.", inline=False)
         embed.add_field(name="joke", value="Tells you a funny joke.", inline=False)
-        await user.send(embed=embed)
-        await ctx.send("Help has been sent to your DMs!")    
+        await ctx.send(embed=embed)
 @bot.command()
-async def fhelp2(ctx):
-        user = ctx.author
-        embed = discord.Embed(title="Here's your help!", description="This is page 2 of Fun Help!For page one, do sbfhelp!")        
+async def fhelp_3(ctx):
+        embed = discord.Embed(title="Here's your help!", description="This is page 3 of Fun Help!For page one, do sbfhelp!")        
         embed.add_field(name="water", value="I give you some water.", inline=False)
         embed.add_field(name="highfive", value="High five!", inline=False)
         embed.add_field(name="vanish", value="Provides a vanishing GIF.", inline=False)
         embed.add_field(name="dance", value="Provides a dancing GIF", inline=False)
         embed.add_field(name="randmeme", value="Gives you a meme out of an ever growing list", inline=False)
         embed.add_field(name="drift", value="kansei dorifto!", inline=False)
-        embed.add_field(name="joined", value="Tells you when a user joined", inline=False)
-        await user.send(embed=embed)
-        await ctx.send("Help has been sent to your DMs!")    
+        await ctx.send(embed=embed)
+@bot.event()
+async def on_guild_join():
+    embed = discord.Embed(title="Thanks for adding me!", description="My name is SobbleBot, Agent SobbleBot. ")    
+    embed.add_field(name="Operation Join Server is accomplished.", description="https://cdn.discordapp.com/attachments/336642776609456130/648509688480268308/5025d60f9100f844d6294c3d6c2e32c8-1.png")   
+    await ctx.send(embed=embed)     
 @bot.command()
-async def mhelp(ctx):
-    user = ctx.author
+async def mhelp(ctx, arg):
     embed = discord.Embed(title="Here's your moderation help!", description="Moderation help is here!")
     embed.add_field(name="sbban", value="Bans a user", inline=False)
     embed.add_field(name="sbunban", value="Unbans a user", inline=False)
     embed.add_field(name="sbmute", value="Mutes a user[creates a role called muted]", inline=False)
     embed.add_field(name="sbunmute", value="Unmutes a user", inline=False)
-    await user.send(embed=embed)
-    await ctx.send("Help has been sent to your DMs!")    
+    await ctx.send(embed=embed)
      
 @bot.command()
 async def dhelp(ctx):
-    user = ctx.author
     embed = discord.Embed(title="Here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
     embed.add_field(name="knowbasiccoding", value="The bot says'Before you ask some easy to answer questions, you should know basic coding.'",inline=False)
     embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
     embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
     embed.add_field(name="tias", value="Try it and see!", inline=False)
-    await user.send(embed=embed)
-    await ctx.send("Help has been sent to your DMs!")    
+    await ctx.send(embed=embed)
+
 @bot.command()
 async def faq(ctx):
-    user = ctx.author
     embed = discord.Embed(title="Here's your SobbleBot FAQ!", description="Frequently asked questions")
     embed.add_field(name="Who made this bot?", value="Devble#3618 did!", inline=False)
     embed.add_field(name="What's the support server?", value="https://discord.gg/8uQ4EeX", inline=False)
-    await user.send(embed=embed)
-    await ctx.send("Help has been sent to your DMs!")    
+    await ctx.send(embed=embed)
 @bot.command()
 async def knowbasiccoding(ctx):
  await ctx.send("Before you ask some easy to answer questions, you should know basic coding.")
@@ -173,7 +170,7 @@ async def joined(ctx, member: discord.Member):
     embed = discord.Embed(name="When did they join?", description="Hmm, when did they join?")
     embed.add_field(name="Let's see... oh I know!", value="{0.name} joined in {0.joined_at}!".format(member))
     embed.add_field(name="The time system", value="It's YYYY-MM-DD")
-    await ctx.send(embed=embed)
+    await ctx.send(embed=embed)   
 @bot.command()
 async def vanish(ctx):
     await ctx.send("https://tenor.com/view/sobble-whatever-bye-pokemon-pokemon-sword-and-shield-sword-and-shield-gif-13656059")
@@ -241,7 +238,12 @@ async def mute(ctx, member : discord.Member = None):
 
      await member.add_roles(role)
      await ctx.send(f'{str(member)} was muted!')  
-
+@bot.command()
+async def jojoke():
+     await ctx.send("You expected a jojoke, but it was me, DIO!")
+     await ctx.send("https://cdn.discordapp.com/attachments/559455534965850142/648223929613418526/Z.png")
+     time.sleep(2)
+     await ctx.send("shit that's a jojoke")
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def unmute(ctx, member : discord.Member = None):
@@ -250,6 +252,7 @@ async def unmute(ctx, member : discord.Member = None):
         return
     else:
      await member.remove_roles("Muted")
+     await member.delete_roles("Muted")
      await ctx.send(f'{str(member)} was unmuted!')
 
 
