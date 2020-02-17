@@ -254,10 +254,4 @@ async def unmute(ctx, member : discord.Member = None):
      await member.remove_roles("Muted")
      await member.delete_roles("Muted")
      await ctx.send(f'{str(member)} was unmuted!')
-
-
-
-
-
- #Bot Business Proposals:1
-bot.run('NjQ1MDA5Njc4MjI0NDU3NzQw.XdWmjw.FcOD1kxSZ3dPAzN-lpTvEz-stc4')
+bot.run('JOJO')
