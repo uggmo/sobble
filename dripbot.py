@@ -5,13 +5,12 @@ import time
 import logging
 from discord import Client
 from discord.ext import commands
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('sb!'))
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('drip!'))
 bot.remove_command('help')
-
 @bot.event
 async def on_ready():
     print('bot is up')
-    activity = discord.Activity(name='pokemon|sb!help', type=discord.ActivityType.playing)
+    activity = discord.Activity(name='quarentine|drip!help', type=discord.ActivityType.playing)
     await bot.change_presence(activity=activity)
 @bot.command()
 async def help(ctx):
@@ -43,9 +42,8 @@ async def fhelp_1(ctx):
         embed.add_field(name="fhelp", value="Help is brought up", inline=False)
         embed.add_field(name="suggest [suggestion]", value="Suggests an idea to be added to SobbleBot", inline=False)
         embed.add_field(name="calmingmusic", value="Gives you a video of calming waves.", inline=False)
-        embed.add_field(name="hug", value="Sobble hugs you!", inline=False)
-        embed.add_field(name="slap", value="Sobble slaps you!", inline=False)
         embed.add_field(name="dab", value="?????", inline=False)
+        embed.add_field(name="story", value="tells you a nice little story with you as the main character!", inline=False)
         await ctx.send(embed=embed)
 @bot.command() 
 async def fhelp_2(ctx):
@@ -58,8 +56,7 @@ async def fhelp_2(ctx):
         await ctx.send(embed=embed)
 @bot.command()
 async def fhelp_3(ctx):
-        embed = discord.Embed(title="Here's your help!", description="This is page 3 of Fun Help!For page one, do sbfhelp!")        
-        embed.add_field(name="water", value="I give you some water.", inline=False)
+        embed = discord.Embed(title="Here's your help!", description="This is page 3 of Fun Help!For page one, do drip!fhelp!")        
         embed.add_field(name="highfive", value="High five!", inline=False)
         embed.add_field(name="vanish", value="Provides a vanishing GIF.", inline=False)
         embed.add_field(name="dance", value="Provides a dancing GIF", inline=False)
@@ -79,16 +76,6 @@ async def mhelp(ctx, arg):
     embed.add_field(name="sbmute", value="Mutes a user[creates a role called muted]", inline=False)
     embed.add_field(name="sbunmute", value="Unmutes a user", inline=False)
     await ctx.send(embed=embed)
-     
-@bot.command()
-async def dhelp(ctx):
-    embed = discord.Embed(title="Here's your DBL/DPY help!", description="DBL/DPY Help is here! for normal help do sbhelp!", colour=0x206694)
-    embed.add_field(name="knowbasiccoding", value="The bot says'Before you ask some easy to answer questions, you should know basic coding.'",inline=False)
-    embed.add_field(name="searchgoogle", value="The bot says Search google for an answer, this is easy to answer.", inline=False)
-    embed.add_field(name="readdocs", value="The bot says read the docs!", inline=False)
-    embed.add_field(name="tias", value="Try it and see!", inline=False)
-    await ctx.send(embed=embed)
-
 @bot.command()
 async def faq(ctx):
     embed = discord.Embed(title="Here's your SobbleBot FAQ!", description="Frequently asked questions")
@@ -96,27 +83,8 @@ async def faq(ctx):
     embed.add_field(name="What's the support server?", value="https://discord.gg/8uQ4EeX", inline=False)
     await ctx.send(embed=embed)
 @bot.command()
-async def knowbasiccoding(ctx):
- await ctx.send("Before you ask some easy to answer questions, you should know basic coding.")
-@bot.command()
-async def searchgoogle(ctx):
-    await ctx.send("Search google for an answer, this is easy to answer.")
-@bot.command()
-async def readdocs(ctx):
- await ctx.send("Read the docs.https://cdn.discordapp.com/attachments/645695800352964618/646681731713204255/9k.png")
-@bot.command()
-async def tias(ctx):
-    await ctx.send("https://i.imgur.com/VkRzeQJ.png")
-
-@bot.command()
 async def calmingmusic(ctx):
     await ctx.send("***https://www.youtube.com/watch?v=j5a0jTc9S10***")
-@bot.command()
-async def hug(ctx):
-    await ctx.send("https://tenor.com/view/hug-anime-gif-11074788")
-@bot.command()
-async def slap(ctx):
-    await ctx.send("https://tenor.com/view/slap-bears-gif-10422113")
 @bot.command()
 async def wisdom(ctx):
     wisdom = ["You can't get banned from a server if you follow the rules.","A sort of life is better than no life.","Some servers aren't worth going to.","Don't obsess over everything."]
@@ -147,22 +115,25 @@ async def joke(ctx):
 async def facts(ctx):
     await ctx.send("https://imgur.com/a/H63R8hG")
 @bot.command()
-async def water(ctx):
-    await ctx.send("https://tenor.com/view/sobble-water-pokemon-sword-and-shield-spit-pokemon-gif-13655946")
-@bot.command()
-async def highfive(ctx):
-   await ctx.send("https://tenor.com/view/pokemon-sobble-high-five-hi-five-cute-gif-15450470")
-@bot.command()
 async def coinflip(ctx):
         coin = ["Heads", "Tails"]
         coinf = random.choice(coin)
         await ctx.send(coinf)
+@bot.command()
+async def story(ctx):
+        await ctx.send("I see you would like a story. Now preparing...")
+        await ctx.send (f"You are {ctx.message.author}, correct?")
+        if 'yes' or 'YES' in message.content:
+         await ctx.send (f"Okay then, {ctx.message.author} The great legend of {ctx.message.author} is about to begin!")
+         embed = discord.Embed(name=f"The story of {ctx.message.author}", description="By DripBot")
+         embed.add_field("Don't like the story? Add a suggestion!")
+         await ctx.send(f"{ctx.message.author} was going on a stroll,
 @bot.event    
 async def on_message(message):
  if message.author == bot.user:
       return
  if message.content.startswith('<@645009678224457740>'):    
-     await message.channel.send("Use sb!help to find all the commands!")
+     await message.channel.send("Use drip!help to find all the commands!")
  await bot.process_commands(message)
 
 @bot.command()
@@ -172,11 +143,8 @@ async def joined(ctx, member: discord.Member):
     embed.add_field(name="The time system", value="It's YYYY-MM-DD")
     await ctx.send(embed=embed)   
 @bot.command()
-async def vanish(ctx):
-    await ctx.send("https://tenor.com/view/sobble-whatever-bye-pokemon-pokemon-sword-and-shield-sword-and-shield-gif-13656059")
-@bot.command()
 async def dance(ctx):
-    await ctx.send("https://tenor.com/view/thanos-dancing-fortnite-orange-gif-11793362")
+    await ctx.send("https://tenor.com/view/dancing-coffin-coffin-dance-funeral-funny-farewell-gif-16737844")
 @bot.command()
 async def dab(ctx):
     await ctx.send("You asked.")
@@ -227,17 +195,17 @@ async def ban(ctx, member : discord.Member, * , reason=None):
    await ctx.send("*door shuts* That user has been banned")
 @bot.command()
 @commands.has_permissions(kick_members=True)
-async def mute(ctx, member : discord.Member = None):
-     perm = discord.PermissionOverwrite(send_messages=False).pair()[0]
-     await ctx.guild.create_role(name="Muted", permissions=perm)
+async def mute(ctx, member : discord.Member = None, mutetime: typing.Optional[int] = 0,*, reason="None"):
      role = discord.utils.get(ctx.guild.roles, name="Muted")
 
-     if member is None:
+     if member == None:
         await ctx.send('Please pass in a valid user')
         return
-
      await member.add_roles(role)
-     await ctx.send(f'{str(member)} was muted!')  
+     await ctx.channel.send(f'{member} was muted!')
+     if mute_time > 0:
+      await asyncio.sleep(mutetime)
+      await member.remove_roles("Muted", reason)
 @bot.command()
 async def jojoke():
      await ctx.send("You expected a jojoke, but it was me, DIO!")
@@ -252,6 +220,5 @@ async def unmute(ctx, member : discord.Member = None):
         return
     else:
      await member.remove_roles("Muted")
-     await member.delete_roles("Muted")
      await ctx.send(f'{str(member)} was unmuted!')
 bot.run('JOJO')
